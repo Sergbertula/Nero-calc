@@ -842,7 +842,7 @@ footer {
 <!-- ===== AREA ===== -->
 <div class="screen" id="s-area">
   <div class="sbar"><span>9:41</span><span>●●●</span></div>
-  <div class="hdr"><button class="hbk" onclick="goBackArea()">←</button><div class="htitle">Площадь</div><div class="hright" onclick="go('s-splash')">🏠</div></div>
+  <div class="hdr"><button class="hbk" onclick="goBackArea()">←</button><div class="htitle" id="area-title">Площадь</div><div class="hright" onclick="go('s-splash')">🏠</div></div>
   <div class="scroll">
     <div class="slabel">Шаг 2 из 4 — Укажи площадь</div>
     <div class="area-big"><span class="anum" id="anum">20</span><span class="aunit"> м²</span><div class="ahint" id="ahint">Стандартная спальня</div></div>
@@ -1251,39 +1251,239 @@ const S = {
 // ========== TONES ==========
 const TONES = {
   contemporary:[
-    {name:'Тёплый минимализм',dots:['#E8DDD0','#C9B8A8','#A89880'],img:'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=400&q=70'},
-    {name:'Матовый графит',dots:['#3D3D3D','#F5F5F5','#B0B0B0'],img:'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=400&q=70'},
-    {name:'Скрытое хранение',dots:['#BDB8B2','#E8E2DC','#B87333'],img:'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=70'},
-    {name:'Природный беж',dots:['#D4C5B0','#E8DFD0','#8C7B6A'],img:'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=400&q=70'},
-    {name:'Белый с акцентом',dots:['#FFF','#E0E0E0','#4A6CF7'],img:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=70'},
+    {name:"Тёплый минимализм",dots:['#E8DDD0','#C9B8A8','#A89880'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,modern&sig=1",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,modern&sig=1",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,modern&sig=1",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,modern&sig=1",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,modern&sig=1",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,modern&sig=1",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,modern&sig=1",
+    }},
+    {name:"Матовый графит",dots:['#3D3D3D','#F5F5F5','#B0B0B0'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,modern&sig=2",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,modern&sig=2",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,modern&sig=2",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,modern&sig=2",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,modern&sig=2",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,modern&sig=2",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,modern&sig=2",
+    }},
+    {name:"Скрытое хранение",dots:['#BDB8B2','#E8E2DC','#B87333'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,modern&sig=3",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,modern&sig=3",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,modern&sig=3",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,modern&sig=3",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,modern&sig=3",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,modern&sig=3",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,modern&sig=3",
+    }},
+    {name:"Природный беж",dots:['#D4C5B0','#E8DFD0','#8C7B6A'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,modern&sig=4",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,modern&sig=4",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,modern&sig=4",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,modern&sig=4",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,modern&sig=4",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,modern&sig=4",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,modern&sig=4",
+    }},
+    {name:"Белый с акцентом",dots:['#FFF','#E0E0E0','#4A6CF7'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,modern&sig=5",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,modern&sig=5",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,modern&sig=5",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,modern&sig=5",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,modern&sig=5",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,modern&sig=5",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,modern&sig=5",
+    }},
   ],
   classic:[
-    {name:'«Дорогой уют»',dots:['#F5ECD7','#B8924A','#4A2F1A'],img:'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&q=70'},
-    {name:'Французский шик',dots:['#FAF3E0','#C9C0D3','#C8A951'],img:'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=70'},
-    {name:'Мягкое освещение',dots:['#F8F4EC','#E8D5C4','#C49A3C'],img:'https://images.unsplash.com/photo-1615529162924-f8605388461d?w=400&q=70'},
-    {name:'Кремовый с золотом',dots:['#FDF6E3','#D4AF37','#8B6914'],img:'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=400&q=70'},
-    {name:'Тёмный орех',dots:['#3C2415','#8B6347','#F5ECD7'],img:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=70'},
+    {name:"Дорогой уют",dots:['#F5ECD7','#B8924A','#4A2F1A'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,classic&sig=1",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,classic&sig=1",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,classic&sig=1",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,classic&sig=1",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,classic&sig=1",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,classic&sig=1",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,classic&sig=1",
+    }},
+    {name:"Французский шик",dots:['#FAF3E0','#C9C0D3','#C8A951'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,classic&sig=2",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,classic&sig=2",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,classic&sig=2",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,classic&sig=2",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,classic&sig=2",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,classic&sig=2",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,classic&sig=2",
+    }},
+    {name:"Мягкое освещение",dots:['#F8F4EC','#E8D5C4','#C49A3C'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,classic&sig=3",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,classic&sig=3",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,classic&sig=3",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,classic&sig=3",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,classic&sig=3",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,classic&sig=3",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,classic&sig=3",
+    }},
+    {name:"Кремовый с золотом",dots:['#FDF6E3','#D4AF37','#8B6914'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,classic&sig=4",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,classic&sig=4",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,classic&sig=4",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,classic&sig=4",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,classic&sig=4",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,classic&sig=4",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,classic&sig=4",
+    }},
+    {name:"Тёмный орех",dots:['#3C2415','#8B6347','#F5ECD7'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,classic&sig=5",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,classic&sig=5",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,classic&sig=5",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,classic&sig=5",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,classic&sig=5",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,classic&sig=5",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,classic&sig=5",
+    }},
   ],
   japandi:[
-    {name:'Светлый дуб',dots:['#D4B896','#8FA89A','#E8E0D0'],img:'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&q=70'},
-    {name:'Природные оттенки',dots:['#7A9E7E','#C4714A','#E8D8B8'],img:'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=400&q=70'},
-    {name:'Дзен-нейтральный',dots:['#F8F6F2','#3A3A3A','#C8B87A'],img:'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=400&q=70'},
-    {name:'Матча и лён',dots:['#7A9E7E','#E8E0D0','#C4A882'],img:'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=400&q=70'},
-    {name:'Чёрный бамбук',dots:['#1A1A1A','#D4B896','#F5F0E8'],img:'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=400&q=70'},
+    {name:"Светлый дуб",dots:['#D4B896','#8FA89A','#E8E0D0'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,japandi,minimal&sig=1",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,japandi,minimal&sig=1",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,japandi,minimal&sig=1",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,japandi,minimal&sig=1",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,japandi,minimal&sig=1",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,japandi,minimal&sig=1",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,japandi,minimal&sig=1",
+    }},
+    {name:"Природные оттенки",dots:['#7A9E7E','#C4714A','#E8D8B8'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,japandi,minimal&sig=2",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,japandi,minimal&sig=2",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,japandi,minimal&sig=2",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,japandi,minimal&sig=2",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,japandi,minimal&sig=2",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,japandi,minimal&sig=2",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,japandi,minimal&sig=2",
+    }},
+    {name:"Дзен-нейтральный",dots:['#F8F6F2','#3A3A3A','#C8B87A'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,japandi,minimal&sig=3",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,japandi,minimal&sig=3",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,japandi,minimal&sig=3",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,japandi,minimal&sig=3",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,japandi,minimal&sig=3",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,japandi,minimal&sig=3",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,japandi,minimal&sig=3",
+    }},
+    {name:"Матча и лён",dots:['#7A9E7E','#E8E0D0','#C4A882'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,japandi,minimal&sig=4",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,japandi,minimal&sig=4",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,japandi,minimal&sig=4",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,japandi,minimal&sig=4",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,japandi,minimal&sig=4",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,japandi,minimal&sig=4",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,japandi,minimal&sig=4",
+    }},
+    {name:"Чёрный бамбук",dots:['#1A1A1A','#D4B896','#F5F0E8'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,japandi,minimal&sig=5",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,japandi,minimal&sig=5",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,japandi,minimal&sig=5",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,japandi,minimal&sig=5",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,japandi,minimal&sig=5",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,japandi,minimal&sig=5",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,japandi,minimal&sig=5",
+    }},
   ],
   softloft:[
-    {name:'Индустриальный уют',dots:['#9E9E9E','#B5674B','#B87333'],img:'https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=400&q=70'},
-    {name:'Мягкий контраст',dots:['#424242','#F5F5F5','#D4A843'],img:'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=400&q=70'},
-    {name:'Текстуры камня',dots:['#D4CFC8','#4A4A4A','#C49A3C'],img:'https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=400&q=70'},
-    {name:'Кирпич и дерево',dots:['#B5674B','#8B7355','#F5F0E8'],img:'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&q=70'},
-    {name:'Металл и бетон',dots:['#707070','#A0A0A0','#E0E0E0'],img:'https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=400&q=70'},
+    {name:"Индустриальный уют",dots:['#9E9E9E','#B5674B','#B87333'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,loft,industrial&sig=1",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,loft,industrial&sig=1",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,loft,industrial&sig=1",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,loft,industrial&sig=1",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,loft,industrial&sig=1",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,loft,industrial&sig=1",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,loft,industrial&sig=1",
+    }},
+    {name:"Мягкий контраст",dots:['#424242','#F5F5F5','#D4A843'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,loft,industrial&sig=2",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,loft,industrial&sig=2",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,loft,industrial&sig=2",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,loft,industrial&sig=2",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,loft,industrial&sig=2",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,loft,industrial&sig=2",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,loft,industrial&sig=2",
+    }},
+    {name:"Текстуры камня",dots:['#D4CFC8','#4A4A4A','#C49A3C'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,loft,industrial&sig=3",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,loft,industrial&sig=3",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,loft,industrial&sig=3",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,loft,industrial&sig=3",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,loft,industrial&sig=3",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,loft,industrial&sig=3",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,loft,industrial&sig=3",
+    }},
+    {name:"Кирпич и дерево",dots:['#B5674B','#8B7355','#F5F0E8'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,loft,industrial&sig=4",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,loft,industrial&sig=4",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,loft,industrial&sig=4",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,loft,industrial&sig=4",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,loft,industrial&sig=4",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,loft,industrial&sig=4",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,loft,industrial&sig=4",
+    }},
+    {name:"Металл и бетон",dots:['#707070','#A0A0A0','#E0E0E0'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,loft,industrial&sig=5",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,loft,industrial&sig=5",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,loft,industrial&sig=5",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,loft,industrial&sig=5",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,loft,industrial&sig=5",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,loft,industrial&sig=5",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,loft,industrial&sig=5",
+    }},
   ],
   organic:[
-    {name:'Живая природа',dots:['#8BA888','#B8855A','#C4BDB5'],img:'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=70'},
-    {name:'Терракотовый сад',dots:['#C4714A','#7A8C5A','#F5ECD7'],img:'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&q=70'},
-    {name:'Мягкая земля',dots:['#C4948A','#6B7A5A','#D4C4A8'],img:'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400&q=70'},
-    {name:'Шалфей и глина',dots:['#8BA888','#C4714A','#E8DDD0'],img:'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=400&q=70'},
-    {name:'Сосна и камень',dots:['#5C7A5A','#C4BDB5','#F5F0E8'],img:'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=400&q=70'},
+    {name:"Живая природа",dots:['#8BA888','#B8855A','#C4BDB5'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,organic,natural&sig=1",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,organic,natural&sig=1",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,organic,natural&sig=1",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,organic,natural&sig=1",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,organic,natural&sig=1",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,organic,natural&sig=1",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,organic,natural&sig=1",
+    }},
+    {name:"Терракотовый сад",dots:['#C4714A','#7A8C5A','#F5ECD7'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,organic,natural&sig=2",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,organic,natural&sig=2",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,organic,natural&sig=2",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,organic,natural&sig=2",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,organic,natural&sig=2",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,organic,natural&sig=2",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,organic,natural&sig=2",
+    }},
+    {name:"Мягкая земля",dots:['#C4948A','#6B7A5A','#D4C4A8'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,organic,natural&sig=3",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,organic,natural&sig=3",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,organic,natural&sig=3",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,organic,natural&sig=3",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,organic,natural&sig=3",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,organic,natural&sig=3",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,organic,natural&sig=3",
+    }},
+    {name:"Шалфей и глина",dots:['#8BA888','#C4714A','#E8DDD0'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,organic,natural&sig=4",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,organic,natural&sig=4",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,organic,natural&sig=4",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,organic,natural&sig=4",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,organic,natural&sig=4",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,organic,natural&sig=4",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,organic,natural&sig=4",
+    }},
+    {name:"Сосна и камень",dots:['#5C7A5A','#C4BDB5','#F5F0E8'],imgs:{
+      default:"https://source.unsplash.com/400x300/?living+room,interior,sofa,organic,natural&sig=5",
+      Спальня:"https://source.unsplash.com/400x300/?bedroom,interior,bed,organic,natural&sig=5",
+      Гостиная:"https://source.unsplash.com/400x300/?living+room,interior,sofa,organic,natural&sig=5",
+      Кухня:"https://source.unsplash.com/400x300/?kitchen,interior,modern,organic,natural&sig=5",
+      Санузел:"https://source.unsplash.com/400x300/?bathroom,interior,bath,organic,natural&sig=5",
+      Прихожая:"https://source.unsplash.com/400x300/?hallway,interior,entrance,organic,natural&sig=5",
+      Детская:"https://source.unsplash.com/400x300/?kids+room,children+bedroom,nursery,organic,natural&sig=5",
+    }},
   ],
 };
 
@@ -1423,20 +1623,26 @@ function selRoom(el) {
   el.classList.add('sel');
   S.room=el.dataset.room; S.roomIcon=el.dataset.icon; S.hasSant=el.dataset.sant==='1';
   document.getElementById('btn-room').disabled=false;
+  // Update area screen title and hint
+  const areaTitle=document.getElementById('area-title');
+  if(areaTitle) areaTitle.textContent='Площадь · '+S.room;
+  document.getElementById('ahint').textContent='Площадь: '+S.room;
 }
-function nextRoom() { go(S.hasSant?'s-style':'s-area'); }
+function nextRoom() { go('s-style'); }
 
 function selStyle(el) {
   document.querySelectorAll('.schip').forEach(c=>c.classList.remove('sel'));
   el.classList.add('sel');
   const t = TONES[el.dataset.s];
   document.getElementById('tone-lbl').textContent = 'Выбери тон · '+el.textContent;
-  document.getElementById('tone-grid').innerHTML = t.map(x=>`
-    <div class="tone-card" onclick="selTone(this)">
+  document.getElementById('tone-grid').innerHTML = t.map(x=>{
+    const img = (x.imgs && x.imgs[S.room]) ? x.imgs[S.room] : (x.imgs ? x.imgs.default : x.img);
+    return `<div class="tone-card" onclick="selTone(this)">
       <div class="tchk">✓</div>
-      <img src="${x.img}" loading="lazy" alt="${x.name}">
+      <img src="${img}" loading="lazy" alt="${x.name}">
       <div class="tinfo"><div class="tname">${x.name}</div><div class="tdots">${x.dots.map(d=>`<div class="tdot" style="background:${d}"></div>`).join('')}</div></div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
   document.getElementById('tone-sec').style.display='block';
   document.getElementById('btn-style').disabled=true;
 }
@@ -1445,14 +1651,14 @@ function selTone(el) {
   el.classList.add('sel');
   document.getElementById('btn-style').disabled=false;
 }
-function goBackArea() { go(S.hasSant?'s-style':'s-room'); }
+function goBackArea() { go('s-style'); }
 
 function updArea(v) {
   v=parseInt(v); S.area=v;
   document.getElementById('anum').textContent=v;
-  const hints=[[1,'Маленькое помещение'],[8,'Прихожая'],[10,'Санузел'],[14,'Небольшая комната'],[18,'Стандартная спальня'],[24,'Просторная гостиная'],[40,'Большое помещение'],[80,'Очень большое']];
-  let h=hints[0][1]; hints.forEach(([k,t])=>{if(v>=k)h=t;});
-  document.getElementById('ahint').textContent=h;
+  // Show room name in hint
+  const roomHint = S.room ? 'Площадь: ' + S.room : 'Укажи площадь';
+  document.getElementById('ahint').textContent=roomHint;
   const pct=(v/200)*100;
   document.getElementById('aslider').style.background=`linear-gradient(to right,#4A6CF7 0%,#4A6CF7 ${pct}%,#e8e8ea ${pct}%)`;
 }
